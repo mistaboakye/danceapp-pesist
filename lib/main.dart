@@ -1,7 +1,26 @@
+import 'package:danceapp/DBOperations.dart';
+import 'package:danceapp/LoginPage.dart';
+import 'package:danceapp/databaseDB.dart';
 import 'package:flutter/material.dart';
 import 'package:danceapp/homepage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final db = await database().initalizeDB();
+
+  var users = await DBOperations(db).retrieveUsers();
+  if (users.isNotEmpty) {
+    return runApp(
+      MaterialApp(
+        home: Homepage(),
+      ),
+    );
+  }
+  runApp(
+    const MaterialApp(
+      home: LoginPage(),
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -15,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Homepage(),
+      home: const LoginPage(),
     );
   }
 }

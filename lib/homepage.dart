@@ -125,7 +125,7 @@ class Homepage extends StatelessWidget {
                             color: Colors.white),
                         child: Center(
                           child: Text(
-                            'Modern',
+                            'Azonto',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -138,7 +138,7 @@ class Homepage extends StatelessWidget {
                             color: Colors.white),
                         child: Center(
                           child: Text(
-                            'HipHop',
+                            'Ballet',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -147,23 +147,65 @@ class Homepage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 310,
+                  height: 490,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      // _buildCard(
-                      //   image: 'images/watch.png',
-                      //   color: Colors.white,
-                      // ),
-                      // _buildCard(
-                      //   image: 'images/watch2.png',
-                      //   color: Color(0xFFDCDDE1),
-                      // ),
+                      _danceBox(
+                        image: 'images/blackboys.jpg',
+                        color: Color(0xFFDCDDE1),
+                      ),
+                      _danceBox(
+                        image: 'images/whitegirls.jpg',
+                        color: Color(0xFFDCDDE1),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _danceBox extends StatelessWidget {
+  const _danceBox({required this.image, required this.color});
+  final String image;
+  final Color color;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Container(
+        width: 230,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20), color: color),
+        child: Padding(
+          padding: EdgeInsets.only(top: 15, left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                image,
+                width: 200,
+              ),
+              SizedBox(height: 30),
+              Text(
+                'Black Boys Dance Group',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              ),
+              SizedBox(height: 5),
+              Text(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and mor",
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+              Expanded(
+                child: TextButton(onPressed: () {}, child: Text("Read More")),
+              )
+            ],
           ),
         ),
       ),
